@@ -38,6 +38,7 @@ public class HraPosunPoSachovnici {
             case UP -> can_up();
             case LEFT -> can_left();
             case RIGHT -> can_right();
+            case NULL -> false;
         };
     }
 
