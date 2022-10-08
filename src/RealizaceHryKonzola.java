@@ -29,7 +29,7 @@ public class RealizaceHryKonzola {
                     return Direction.DOWN;
                 case 'K':
                 case 'k':
-                    return Direction.END;
+                    return Direction.NONE;
                 default:
                     System.out.println("Musíš jeden ze znaků: L, R, U, D, K");
             }
@@ -45,7 +45,7 @@ public class RealizaceHryKonzola {
         Direction move;
         while(true) {
             move = getMove();
-            if(move == Direction.END) break;
+            if(move == Direction.NONE) break;
             hra.move(move);
         }
         System.out.println(hra.getHistoryAsString());
