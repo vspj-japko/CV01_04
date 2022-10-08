@@ -4,51 +4,43 @@ public class RealizaceHryKonzola {
 
 
     private final HraPosunPoSachovnici hra;
-    public RealizaceHryKonzola() {
-        this.hra = new HraPosunPoSachovnici(8, 8);
+    public RealizaceHryKonzola(int nx, int ny) {
+        this.hra = new HraPosunPoSachovnici(nx, ny);
     }
     Scanner scanner = new Scanner(System.in);
 
     public Direction getMove() {
-        char input;
+        Character input;
         while(true) {
             System.out.println("Zadej direction: ");
             input = scanChar();
-            switch(input) {
-                case 'L':
-                case 'l':
-                    return Direction.LEFT;
-                case 'R':
-                case 'r':
-                    return Direction.RIGHT;
-                case 'U':
-                case 'u':
-                    return Direction.UP;
-                case 'D':
-                case 'd':
-                    return Direction.DOWN;
-                case 'K':
-                case 'k':
-                    return Direction.NONE;
-                default:
-                    System.out.println("Musíš jeden ze znaků: L, R, U, D, K");
+
+            if(input == null) System.out.println("Musíš jeden ze znaků: L, R, U, D, K");
+            else {
+                switch(input) {
+                    case 'L', 'l' -> { return Direction.LEFT; }
+                    case 'R', 'r' -> { return Direction.RIGHT; }
+                    case 'U', 'u' -> { return Direction.UP; }
+                    case 'D', 'd' -> { return Direction.DOWN; }
+                    case 'K', 'k' -> {
+                        System.out.println(hra.getHistoryAsString());
+                        System.exit(0);
+                    }
+                    default -> System.out.println("Musíš zadat jeden ze znaků: L, R, U, D, K");
+                }
+                }
             }
         }
-    }
 
-    private char scanChar() {
+    private Character scanChar() {
         String input = scanner.next();
-        return input.length() == 1 ? input.charAt(0) : 'N';
+        return input.length() == 1 ? input.charAt(0) : null;
     }
 
+    @SuppressWarnings("InfiniteLoopStatement")
     public void execute() {
-        Direction move;
         while(true) {
-            move = getMove();
-            if(move == Direction.NONE) break;
-            hra.move(move);
+            hra.move(getMove());
         }
-        System.out.println(hra.getHistoryAsString());
-        System.exit(0);
     }
 }
