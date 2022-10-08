@@ -51,8 +51,6 @@ public class RealizaceHryKonzola {
     public static Character readChar() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Zadej direction: ");
-        if(scan.hasNext("^[lLrRuUdDkK]"))
-            return scan.next().charAt(0);
-        return null;
+        return scan.hasNext("^[lLrRuUdDkK]") ? scan.next().charAt(0) : null;
     }
 }
