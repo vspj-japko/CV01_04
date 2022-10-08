@@ -36,28 +36,45 @@ public class HraPosunPoSachovnici {
         return this.y > 0;
     }
 
-    public boolean can_move(DIRECTION direction) {
+    public boolean can_move(Direction direction) {
         return switch (direction) {
             case DOWN -> can_down();
             case UP -> can_up();
             case LEFT -> can_left();
             case RIGHT -> can_right();
+            case END -> false;
         };
     }
 
-    public void move(DIRECTION direction) {
+    public void move(Direction direction) {
         if(can_move(direction)) {
             switch(direction) {
-                case DOWN -> this.x -= 1;
-                case UP -> this.x += 1;
-                case LEFT -> this.y -= 1;
-                case RIGHT -> this.y += 1;
+                case DOWN -> this.y -= 1;
+                case UP -> this.y += 1;
+                case LEFT -> this.x -= 1;
+                case RIGHT -> this.x += 1;
             }
             history.add(new Point(this.x, this.y));
+        } else {
+            System.out.println("Cant move.");
         }
     }
 
-    public HraPosunPoSachovnici clone() {
-        return this;
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    public String getHistoryAsString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Move History: \n");
+        for(Point point : history) {
+            stringBuilder
+                    .append("[X: ")
+                    .append(point.x)
+                    .append(", Y:")
+                    .append(point.y)
+                    .append("]\n");
+        }
+        return stringBuilder.toString();
     }
 }
