@@ -4,6 +4,11 @@ public class RealizaceHryKonzola {
 
     private final HraPosunPoSachovnici game;
 
+
+    public RealizaceHryKonzola() {
+        this(8,8);
+    }
+
     public RealizaceHryKonzola(int nx, int ny) {
         this.game = new HraPosunPoSachovnici(nx, ny);
     }
