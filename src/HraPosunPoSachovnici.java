@@ -9,6 +9,10 @@ public class HraPosunPoSachovnici {
     private int y = 0;
     private final ArrayList<Point> history = new ArrayList<>();
 
+    public HraPosunPoSachovnici() {
+        this(8, 8);
+    }
+    
 
     public HraPosunPoSachovnici(int nx, int ny) {
         this.nx = nx;
@@ -69,7 +73,7 @@ public class HraPosunPoSachovnici {
                     .append(point.x)
                     .append(";Y: ")
                     .append(point.y)
-                    .append("],");
+                    .append("]");
         }
         return stringBuilder.toString();
     }
