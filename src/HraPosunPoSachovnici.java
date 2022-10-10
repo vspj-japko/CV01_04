@@ -12,7 +12,6 @@ public class HraPosunPoSachovnici {
     public HraPosunPoSachovnici() {
         this(8, 8);
     }
-    
 
     public HraPosunPoSachovnici(int nx, int ny) {
         this.nx = nx;
