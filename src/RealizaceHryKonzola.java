@@ -15,24 +15,15 @@ public class RealizaceHryKonzola {
 
     public void execute() {
         Character input;
-        Direction direction;
         while (true) {
-            input = readChar();
+            System.out.print("Zadej vstup (L, R, U, D, K): ");
+            input = InputReader.readChar();
 
-            if(input == null) {
-                System.out.println("Musíš zadat jeden ze znaků: L, R, U, D, K");
-                continue;
-            }
-
-            direction = getMove(input);
-
-            if(direction != Direction.NULL) game.move(direction);
-
-            else {
-                System.out.println(game.getHistoryAsString());
-                return;
-            }
+            if (input != null && getMove(input) != Direction.NULL) game.move(getMove(input));
+            else if (input != null && (input == 'k' || input == 'K')) break;
+            else System.out.println("Musis zadat jeden ze znaku: L, R, U, D, K");
         }
+        System.out.println(game.getHistoryAsString());
     }
 
     private Direction getMove(Character input) {
@@ -51,11 +42,5 @@ public class RealizaceHryKonzola {
             }
             default -> { return Direction.NULL; }
         }
-    }
-
-    public static Character readChar() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Zadej direction: ");
-        return scan.hasNext("^[lLrRuUdDkK]") ? scan.next().charAt(0) : null;
     }
 }
