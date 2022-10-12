@@ -1,3 +1,7 @@
+package Game;
+
+import Utils.Direction;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -68,9 +72,9 @@ public class HraPosunPoSachovnici {
         stringBuilder.append("Move history:");
         for(Point point : this.history) {
             stringBuilder
-                    .append("\n[X: ")
+                    .append("\n[X:")
                     .append(point.x)
-                    .append(";Y: ")
+                    .append(";Y:")
                     .append(point.y)
                     .append("]");
         }

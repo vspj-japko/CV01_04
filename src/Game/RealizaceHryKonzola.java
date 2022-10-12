@@ -1,4 +1,7 @@
-import java.util.Scanner;
+package Game;
+
+import Utils.Direction;
+import Utils.InputReader;
 
 public class RealizaceHryKonzola {
 
