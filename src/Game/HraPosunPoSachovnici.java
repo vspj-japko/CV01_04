@@ -7,17 +7,17 @@ import java.util.ArrayList;
 
 public class HraPosunPoSachovnici {
 
-    private final int nx;
-    private final int ny;
-    private int x = 0;
-    private int y = 0;
+    private final byte nx;
+    private final byte ny;
+    private byte x = 0;
+    private byte y = 0;
     private final ArrayList<Point> history = new ArrayList<>();
 
     public HraPosunPoSachovnici() {
-        this(8, 8);
+        this((byte)8, (byte)8);
     }
 
-    public HraPosunPoSachovnici(int nx, int ny) {
+    public HraPosunPoSachovnici(byte nx, byte ny) {
         this.nx = nx;
         this.ny = ny;
         this.history.add(new Point(this.x, this.y));

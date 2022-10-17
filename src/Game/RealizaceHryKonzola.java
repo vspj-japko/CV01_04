@@ -9,10 +9,10 @@ public class RealizaceHryKonzola {
 
 
     public RealizaceHryKonzola() {
-        this(8,8);
+        this((byte)8,(byte)8);
     }
 
-    public RealizaceHryKonzola(int nx, int ny) {
+    public RealizaceHryKonzola(byte nx, byte ny) {
         this.game = new HraPosunPoSachovnici(nx, ny);
     }
 
